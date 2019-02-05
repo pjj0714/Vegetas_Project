@@ -49,23 +49,25 @@ export default class Maps extends React.Component {
     this.setState({ isLoaded: true });
   };
 
+  lodingScreen = () => (
+    <View
+      style={{ flex: 1, justifyContent: "center", alignItems: "center" }}>
+      <Image
+        source={{
+          uri:
+            "http://mblogthumb3.phinf.naver.net/20160808_62/kimtom123_1470658981710YkOaF_GIF/15.gif?type=w800"
+        }}
+        style={{
+          width: 150,
+          height: 150
+        }}
+      />
+    </View>
+  );
+
   render() {
     if (!this.state.isLoaded) {
-      return (
-        <View
-          style={{ flex: 1, justifyContent: "center", alignItems: "center" }}>
-          <Image
-            source={{
-              uri:
-                "http://mblogthumb3.phinf.naver.net/20160808_62/kimtom123_1470658981710YkOaF_GIF/15.gif?type=w800"
-            }}
-            style={{
-              width: 150,
-              height: 150
-            }}
-          />
-        </View>
-      );
+      return this.lodingScreen()
     } else {
       return (
         <MapView
