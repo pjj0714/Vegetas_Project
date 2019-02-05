@@ -5,7 +5,7 @@ import { createStackNavigator, createAppContainer } from "react-navigation";
 import Main from "../MainPage/Main";
 import {style} from '../MainPage/FakeData'
 
-class App extends React.Component {
+export default class Style extends React.Component {
   state = {
     style: ""
   };
@@ -38,24 +38,7 @@ class App extends React.Component {
   }
 }
 
-const RootStack = createStackNavigator(
-  {
-    App: App,
-    Main: Main
-  },
-  {
-    initialRouteName: "App"
-    // transitionConfig: () => zoomIn(500)
-  }
-);
 
-const AppContainer = createAppContainer(RootStack);
-
-export default class Navigator extends React.Component {
-  render() {
-    return <AppContainer />;
-  }
-}
 
 const styles = StyleSheet.create({
   container: {

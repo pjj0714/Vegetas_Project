@@ -7,17 +7,19 @@ import {
   Image,
   TouchableOpacity,
   Platform,
-  ScrollView,
+  ScrollView
 } from "react-native";
 import { SearchBar } from "react-native-elements";
 import Restaurant from "./RestaurantInfo";
-import Nav from './Nav'
-import {FakeData} from "./FakeData";
+import Nav from "./Nav";
+import { FakeData } from "./FakeData";
 
 export default class Main extends React.Component {
   state = {
     search: ""
   };
+
+
   updateSearch = search => {
     this.setState({ search });
   };
@@ -29,12 +31,13 @@ export default class Main extends React.Component {
   };
 
   mapEvent = () => {
-    Alert.alert("현위치 기준 지도 페이지로 이동!");
+    const {navigate} = this.props.navigation;
+    navigate('Maps')
   };
 
   userInfo = () => {
-    Navig
-    Alert.alert("유저 정보 페이지로 이동!");
+  const {navigate} = this.props.navigation;
+    navigate('MyPage')
   };
 
   restaurantInfo = () => {
@@ -45,11 +48,14 @@ export default class Main extends React.Component {
     return (
       <View style={styles.contain}>
         <ScrollView>
-          <Nav
-            mapEvent={this.mapEvent}
-            userInfo={this.userInfo}
+          <Nav mapEvent={this.mapEvent} userInfo={this.userInfo} />
+          <Image
+            style={{ height: 150, marginTop: 10 }}
+            source={{
+              uri:
+                "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT3z7idV6ljWPh0pZGcl8mvBrffi_uV3Y20AhFAecBCaZN3IWE8sg"
+            }}
           />
-          <Image style={{height:150, marginTop:10}} source={{uri:'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT3z7idV6ljWPh0pZGcl8mvBrffi_uV3Y20AhFAecBCaZN3IWE8sg'}} />
           <SearchBar
             platform={Platform.OS === "ios" ? "ios" : "android"}
             lightTheme
@@ -60,14 +66,18 @@ export default class Main extends React.Component {
             onCancel={() => this.handleCancle()}
             value={this.state.search}
           />
-          <View style={{flex:1, flexDirection:"column", justifyContent:"space-between"}}>
-          <Restaurant
-            fakeData={FakeData}
-            restaurantInfo={this.restaurantInfo}
-          />
+          <View
+            style={{
+              flex: 1,
+              flexDirection: "column",
+              justifyContent: "space-between"
+            }}>
+            <Restaurant
+              fakeData={FakeData}
+              restaurantInfo={this.restaurantInfo}
+            />
           </View>
         </ScrollView>
-        
       </View>
     );
   }
@@ -93,4 +103,3 @@ const styles = StyleSheet.create({
     backgroundColor: "#FFFFFF"
   }
 });
-
