@@ -21,13 +21,13 @@ import {
   flipX
 } from "react-navigation-transitions";
 import { createStackNavigator, createAppContainer } from "react-navigation"; // Version can be specified in package.json
-import SignUp from "./SignUp";
-import SignIn from "./SignIn";
-import MyPage from "../UserInfo/myInfo";
-import MyInfoMod from "../UserInfo/myInfoMod";
-import Style from '../StyleChoice/Style'
-import Main from '../MainPage/Main'
-import Maps from '../map'
+import SignUp from "./Componenet/Login/SignUp";
+import SignIn from "./Componenet/Login/SignIn";
+import MyPage from "./Componenet/UserInfo/myInfo";
+import MyInfoMod from "./Componenet/UserInfo/myInfoMod";
+import Style from './Componenet/StyleChoice/Style'
+import Main from './Componenet/MainPage/Main'
+import Maps from './Componenet/map'
 
 class HomeScreen extends React.Component {
   static navigationOptions = {
@@ -57,7 +57,7 @@ class HomeScreen extends React.Component {
     return (
       <Animated.View style={(styles.container, { opacity: fadeAnim })}>
         <ImageBackground
-          source={require("../../assets/vf.jpg")}
+          source={require("./assets/vf.jpg")}
           style={styles.backImg}
         >
           <Text style={styles.text}>Vegetas</Text>
